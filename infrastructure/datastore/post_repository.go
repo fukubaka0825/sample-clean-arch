@@ -13,7 +13,7 @@ type postRepository struct {
 
 type PostRepository interface {
 	Store(post *model.Post) error
-	FindAll(posts []*model.Post) ([]*model.Post, error)
+	FindAll(postds []*model.Post) ([]*model.Post, error)
 }
 
 func NewPostRepository(db *gorm.DB) PostRepository {
@@ -26,8 +26,8 @@ func (postRepository *postRepository) Store(post *model.Post) error {
 }
 
 func (postRepository *postRepository) FindAll(posts []*model.Post) ([]*model.Post, error) {
-
-	err := postRepository.db.Find(&posts).Error
+	//postRepository.db.Table("posts").Select("members.name, emails.email").Joins("left join emails on emails.user_id = users.id").Scan(&results)
+	err := postRepository.db.Preload("members").Find(&posts).Scan(&posts).Error
 	if err != nil {
 		return nil, fmt.Errorf("sql error", err)
 	}

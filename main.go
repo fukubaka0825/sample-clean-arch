@@ -32,9 +32,9 @@ func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Con
 // 初期化を行います。
 func init() {
 	loadTemplates()
-	dao.MigrateMembers()
+	//dao.MigrateMembers()
 	//dao.CreateMember()
-	dao.MigratePosts()
+	//dao.MigratePosts()
 }
 
 // 各HTMLテンプレートに共通レイアウトを適用した結果を保存します（初期化時に実行）。

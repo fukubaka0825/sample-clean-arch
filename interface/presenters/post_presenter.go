@@ -2,7 +2,7 @@ package presenters
 
 import (
 	"sample-clean-arch/domain/model"
-	"sample-clean-arch/interface/presenters/view"
+	"sample-clean-arch/usecase/repository/view"
 )
 
 type postPresenter struct {
@@ -19,10 +19,10 @@ type PostPresenter interface {
 func (postPresenter *postPresenter) ResponsePosts(us []*model.Post) []*view.PostView {
 	uvs := []*view.PostView{}
 	for _, u := range us {
-		vs := new(view.PostView{
+		vs := &view.PostView{
 			*u,
 			u.Member.Name,
-		})
+		}
 		uvs = append(uvs,vs)
 	}
 	return uvs

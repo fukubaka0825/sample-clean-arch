@@ -2,7 +2,7 @@ package presenter
 
 import (
 	"sample-clean-arch/domain/model"
-	"sample-clean-arch/interface/presenters/view"
+	"sample-clean-arch/usecase/repository/view"
 )
 
 type PostPresenter interface {

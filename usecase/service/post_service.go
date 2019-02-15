@@ -2,7 +2,7 @@ package service
 
 import (
 	"sample-clean-arch/domain/model"
-	"sample-clean-arch/interface/presenters/view"
+	"sample-clean-arch/usecase/repository/view"
 	"sample-clean-arch/usecase/presenter"
 	"sample-clean-arch/usecase/repository"
 )
