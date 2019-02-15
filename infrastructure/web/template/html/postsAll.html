@@ -1,0 +1,40 @@
+{{define "content"}}
+    <table>
+        <tr>
+            <td>No</td>
+            <td>ユーザー名</td>
+            <td>題名</td>
+            <td>内容</td>
+            <td></td>
+            <td></td>
+
+        </tr>
+        {{range $i, $_ := .}}　
+        <tr>
+            <form action="/post/edit" method="post">
+            <input type="hidden" name="postId" value="{{ .ID}}">
+            <td>{{ $i  }}</td>
+            <td>{{ .MemberName}}</td>
+            <td>{{ .Name}}</td>
+            <td>{{ .Content}}</td>
+            <td><input type="submit" value="更新"></td>
+            </form>
+
+            <form action="/post/delete" method="post">
+            {{/*<input type="hidden" name="_method" value="DELETE">*/}}
+            <input type="hidden" name="id" value="{{ .ID}}">
+            <td><input type="submit" value="削除"></td>
+            </form>
+        </tr>
+        {{end}}
+    </table>
+    <p>Create Post</p>
+<form action="/posts" method="post">
+    <input type="hidden" name="memberId" value="1">
+    <p>題名</p>
+    <input type="text" name="name" width="25">
+    <p>内容</p>
+    <input type="area" name="content"  width="25" >
+    <input type="submit" value="送信">
+</form>
+{{end}}

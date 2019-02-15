@@ -1,0 +1,14 @@
+{{define "content"}}
+<p>Update Post</p>
+<form action="/post/update" method="post">
+    {{/*<input type="hidden" name="_method" value="PUT">*/}}
+    <input type="hidden" name="postId" value="{{ .ID}}">
+    <p>題名</p>
+    <input type="text" name="name" width="25" value="{{ .Name}}">
+
+    <p>内容</p>
+    <input type="area" name="content"  width="25" value="{{ .Content}}" ></form>
+    <br>
+    <input type="submit" value="送信">
+</form>
+{{end}}
