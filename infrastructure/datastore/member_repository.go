@@ -28,6 +28,7 @@ func (memberRepository *memberRepository) Store(member *model.Member) error {
 func (memberRepository *memberRepository) FindAll(members []*model.Member) ([]*model.Member, error) {
 
 	err := memberRepository.db.Find(&members).Error
+
 	if err != nil {
 		return nil, fmt.Errorf("sql error", err)
 	}

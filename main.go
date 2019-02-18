@@ -2,18 +2,17 @@ package main
 
 import (
 	"fmt"
-	"io"
-	"html/template"
-	"sample-clean-arch/const"
-	"sample-clean-arch/infrastructure/web/validater"
-	"sample-clean-arch/infrastructure/datastore"
-	"sample-clean-arch/registry"
-	"sample-clean-arch/conf"
-	"sample-clean-arch/infrastructure/web/router"
-
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	"gopkg.in/go-playground/validator.v9"
+	"html/template"
+	"io"
+	"sample-clean-arch/infrastructure/web/router"
+	"sample-clean-arch/conf"
+	"sample-clean-arch/const"
+	"sample-clean-arch/infrastructure/datastore"
+	"sample-clean-arch/infrastructure/web/validater"
+	"sample-clean-arch/registry"
 )
 
 // レイアウト適用済のテンプレートを保存するmap
@@ -66,11 +65,14 @@ func main() {
 	// DB取得
 	conn := datastore.NewMySqlDB()
 
-	// interactor
+	//// interactor
 	r := registry.NewInteractor(conn)
 
-	// 依存解決
-	h := r.NewAppHandler()
+	//h := r.NewMemberHandler()
+	//g := r.NewPostHandler()
+
+
+	//h := r.NewAppHandler()
 
 	// echo
 	e := echo.New()
@@ -89,7 +91,8 @@ func main() {
 	e.Validator = &validater.CustomValidator{Validator:validator.New()}
 
 	// router
-	router.NewRouter(e, h)
+	router.NewRouter(e, r)
+
 
 	// DB stop
 	defer func() {

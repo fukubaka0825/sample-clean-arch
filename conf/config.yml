@@ -6,4 +6,4 @@ database:
     dbname: "users"
 
 server:
-    address: "1323"
+    address: "3030"

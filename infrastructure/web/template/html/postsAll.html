@@ -14,7 +14,7 @@
             <form action="/post/edit" method="post">
             <input type="hidden" name="postId" value="{{ .ID}}">
             <td>{{ $i  }}</td>
-            <td>{{ .MemberName}}</td>
+            <td>{{.Member.Name}}</td>
             <td>{{ .Name}}</td>
             <td>{{ .Content}}</td>
             <td><input type="submit" value="更新"></td>

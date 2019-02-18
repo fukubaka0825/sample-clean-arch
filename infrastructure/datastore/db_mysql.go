@@ -16,7 +16,7 @@ func NewMySqlDB() *gorm.DB {
 		conf.C.Database.Password,
 		conf.C.Database.Host,
 		conf.C.Database.Port,
-		conf.C.Database.Dbname,
+		conf.C.Database.DBname,
 	)
 
 	conn, err := gorm.Open("mysql", connectionString)

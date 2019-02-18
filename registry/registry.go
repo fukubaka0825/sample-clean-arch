@@ -16,16 +16,17 @@ type interactor struct {
 }
 
 type Interactor interface {
-	NewAppHandler() handler.AppHandler
+	NewMemberHandler()handler.MemberHandler
+	NewPostHandler() handler.PostHandler
 }
 
 func NewInteractor(conn *gorm.DB) Interactor {
 	return &interactor{conn}
 }
 
-func (i *interactor) NewAppHandler() handler.AppHandler {
-	return i.NewAppHandler()
-}
+//func (i *interactor) NewAppHandler() handler.AppHandler {
+//	return i.NewAppHandler()
+//}
 
 func (i *interactor) NewMemberHandler() handler.MemberHandler {
 	return handler.NewMemberHandler(i.NewMemberController())
