@@ -48,7 +48,13 @@ func (uh *memberHandler) CreateMember(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, model.ResponseError{Message: err.Error()})
 	}
 
-	return c.JSON(http.StatusCreated, "success")
+	u, err := uh.memberController.GetMembers()
+	if err != nil {
+		// システム内のエラー
+		return c.JSON(http.StatusBadRequest, err)
+	}
+
+	return c.JSON(http.StatusOK, u)
 }
 func (uh *memberHandler) GetMembers(c echo.Context) error {
 

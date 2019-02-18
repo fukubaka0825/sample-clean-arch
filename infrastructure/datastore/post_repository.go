@@ -14,6 +14,9 @@ type postRepository struct {
 type PostRepository interface {
 	Store(post *model.Post) error
 	FindAll(posts []*model.Post) ([]*model.Post, error)
+	FindById(id int) (*model.Post, error)
+	Update(post *model.Post) error
+	Delete(post *model.Post) error
 }
 
 func NewPostRepository(db *gorm.DB) PostRepository {
@@ -26,11 +29,43 @@ func (postRepository *postRepository) Store(post *model.Post) error {
 }
 
 func (postRepository *postRepository) FindAll(posts []*model.Post) ([]*model.Post, error) {
-
-	err := postRepository.db.Find(&posts).Error
+	//postRepository.db.Table("posts").Select("members.name, emails.email").Joins("left join emails on emails.user_id = users.id").Scan(&results)
+	err := postRepository.db.Preload("Member").Find(&posts).Error
 	if err != nil {
 		return nil, fmt.Errorf("sql error", err)
 	}
 
 	return posts, nil
 }
+
+func (postRepository *postRepository) FindById(id int) (*model.Post, error) {
+	//postRepository.db.Table("posts").Select("members.name, emails.email").Joins("left join emails on emails.user_id = users.id").Scan(&results)
+	post := model.Post{}
+	err := postRepository.db.Find(&post,id).Error
+	if err != nil {
+		return nil, fmt.Errorf("sql error", err)
+	}
+
+	return &post, nil
+}
+
+func (postRepository *postRepository) Update(post *model.Post) error {
+	//postRepository.db.Table("posts").Select("members.name, emails.email").Joins("left join emails on emails.user_id = users.id").Scan(&results)
+	err := postRepository.db.Save(&post).Error
+	if err != nil {
+		return fmt.Errorf("sql error", err)
+	}
+
+	return nil
+}
+
+func (postRepository *postRepository) Delete(post *model.Post) error {
+	//postRepository.db.Table("posts").Select("members.name, emails.email").Joins("left join emails on emails.user_id = users.id").Scan(&results)
+	err := postRepository.db.Delete(&post).Error
+	if err != nil {
+		return fmt.Errorf("sql error", err)
+	}
+
+	return  nil
+}
+

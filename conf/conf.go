@@ -21,7 +21,7 @@ type config struct {
 		Port     string
 		User     string
 		Password string
-		Dbname   string
+		DBname   string
 	}
 	Server struct {
 		Address string
@@ -41,7 +41,7 @@ func ReadConf() {
 	viper.SetConfigType("yml")
 
 	// ファイルパスの設定
-	viper.AddConfigPath(filepath.Join("$GOPATH", "src", "sample-clean-ach", "conf"))
+	viper.AddConfigPath(filepath.Join("$GOPATH", "src", "sample-clean-arch", "conf"))
 
 	// 環境変数から設定値を上書きできるように設定
 	viper.AutomaticEnv()

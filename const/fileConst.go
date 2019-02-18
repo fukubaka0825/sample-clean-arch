@@ -1,7 +1,7 @@
 package _const
 
-var BaseTemplate = "model/html/layout.html"
+var BaseTemplate = "infrastructure/web/template/html/layout.html"
 
-var PostsAll = "model/html/postsAll.html"
+var PostsAll = "infrastructure/web/template/html/postsAll.html"
 
-var UpdataPost = "model/html/updatePost.html"
+var UpdataPost = "infrastructure/web/template/html/updatePost.html"

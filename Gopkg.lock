@@ -2,17 +2,6 @@
 
 
 [[projects]]
-  branch = "master"
-  digest = "1:62822818a2092b0474446db02570a2de7c3324cafc83fadbfe563c7e21d2eaf3"
-  name = "bitbucket.org/liamstask/goose"
-  packages = [
-    "cmd/goose",
-    "lib/goose",
-  ]
-  pruneopts = "UT"
-  revision = "8488cc47d90c8a502b1c41a462a6d9cc8ee0a895"
-
-[[projects]]
   digest = "1:76dc72490af7174349349838f2fe118996381b31ea83243812a97e5a0fd5ed55"
   name = "github.com/dgrijalva/jwt-go"
   packages = ["."]
@@ -94,14 +83,6 @@
   revision = "04140366298a54a039076d798123ffa108fff46c"
 
 [[projects]]
-  branch = "master"
-  digest = "1:c1046169c43b3993cf00edc6fd4a85472badea8497010f883fa7008802d55389"
-  name = "github.com/kylelemons/go-gypsy"
-  packages = ["yaml"]
-  pruneopts = "UT"
-  revision = "08cad365cd28a7fba23bb1e57aa43c5e18ad8bb8"
-
-[[projects]]
   digest = "1:efd601ad1d1189884f37ed075fadb5bbd17f1f5acf5862827247c6da56d125ba"
   name = "github.com/labstack/echo"
   packages = [
@@ -134,17 +115,6 @@
   version = "v1.1.0"
 
 [[projects]]
-  digest = "1:8ef506fc2bb9ced9b151dafa592d4046063d744c646c1bbe801982ce87e4bc24"
-  name = "github.com/lib/pq"
-  packages = [
-    ".",
-    "oid",
-  ]
-  pruneopts = "UT"
-  revision = "4ded0e9383f75c197b3a2aaa6d590ac52df6fd79"
-  version = "v1.0.0"
-
-[[projects]]
   digest = "1:c568d7727aa262c32bdf8a3f7db83614f7af0ed661474b24588de635c20024c7"
   name = "github.com/magiconair/properties"
   packages = ["."]
@@ -167,14 +137,6 @@
   pruneopts = "UT"
   revision = "6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c"
   version = "v0.0.4"
-
-[[projects]]
-  digest = "1:4a49346ca45376a2bba679ca0e83bec949d780d4e927931317904bad482943ec"
-  name = "github.com/mattn/go-sqlite3"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "c7c4067b79cc51e6dfdcef5c702e74b1e0fa7c75"
-  version = "v1.10.0"
 
 [[projects]]
   digest = "1:53bc4cd4914cd7cd52139990d5170d6dc99067ae31c56530621b18b35fc30318"
@@ -252,18 +214,6 @@
   revision = "dcecefd839c4193db0d35b88ec65b4c12d360ab0"
 
 [[projects]]
-  digest = "1:19fd46009e9bad71f7e9a8367e7317ed632f89926352a7d59822edec785ae4f3"
-  name = "github.com/ziutek/mymysql"
-  packages = [
-    "godrv",
-    "mysql",
-    "native",
-  ]
-  pruneopts = "UT"
-  revision = "e08c2f35356576b3c3690c252fe5dca728ae9292"
-  version = "v1.5.4"
-
-[[projects]]
   branch = "master"
   digest = "1:520c8ed6c442eed074caf8c1d874d2b0241edbe59729199f6bdf1db99f2ccb9f"
   name = "golang.org/x/crypto"
@@ -325,7 +275,6 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "bitbucket.org/liamstask/goose/cmd/goose",
     "github.com/jinzhu/gorm",
     "github.com/jinzhu/gorm/dialects/mysql",
     "github.com/labstack/echo",
