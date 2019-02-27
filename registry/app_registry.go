@@ -13,8 +13,8 @@ type Interactor interface {
 }
 func NewInteractor(conn *gorm.DB) Interactor {
 
-	return &interactor{
+	return&interactor{
 		memberInteractor{conn},
-			postInteractor{conn},
+		postInteractor{conn},
 	}
 }

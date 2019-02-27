@@ -2,6 +2,8 @@ package test
 
 
 import (
+	"github.com/jinzhu/gorm"
+	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 	"sample-clean-arch/domain/model"
 	"sample-clean-arch/infrastructure/datastore"
 	"sample-clean-arch/interface/presenters"
@@ -14,8 +16,16 @@ import (
 
 
 func TestCreate(t *testing.T) {
-	//ほんとはgormDBのmock
-	db := datastore.NewMySqlDB()
+	//dbをスタブ用意
+	var db *gorm.DB
+	_,_, err := sqlmock.NewWithDSN("sqlmock_db_0")
+	if err != nil {
+		panic("Got an unexpected error.")
+	}
+	db, err = gorm.Open("sqlmock", "sqlmock_db_0")
+	if err != nil {
+		panic("Got an unexpected error.")
+	}
 	defer db.Close()
 	mockPostRepo := datastore.NewPostRepository(db)
 	mockPresenter := presenters.NewPostPresenter()
@@ -29,9 +39,9 @@ func TestCreate(t *testing.T) {
 		Content: "Content",
 	}
 	se :=service.NewPostService (mockPostRepo, mockPresenter)
-	err := se.Create(&mockPost)
+	seErr := se.Create(&mockPost)
 	//正常系のみ
-	assert.NoError(t, err)
+	assert.NoError(t, seErr)
 
 }
 
