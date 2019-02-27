@@ -12,42 +12,42 @@ type postService struct {
 }
 
 type PostService interface {
-	Create(u *model.Post) error
-	Get(u []*model.Post) ([]*model.Post, error)
+	Create(post *model.Post) error
+	Get(posts []*model.Post) ([]*model.Post, error)
 	GetForEditPost(id int) (*model.Post, error)
-	Update(u *model.Post) error
-	Delete(u *model.Post) error
+	Update(post *model.Post) error
+	Delete(post *model.Post) error
 }
 
 func NewPostService(repo repository.PostRepository, pre presenter.PostPresenter) PostService {
 	return &postService{repo, pre}
 }
 
-func (postService *postService) Create(u *model.Post) error {
-	return postService.PostRepository.Store(u)
+func (postService *postService) Create(post *model.Post) error {
+	return postService.PostRepository.Store(post)
 }
 
-func (postService *postService) Get(u []*model.Post) ([]*model.Post, error) {
-	us, err := postService.PostRepository.FindAll(u)
+func (postService *postService) Get(posts []*model.Post) ([]*model.Post, error) {
+	pos, err := postService.PostRepository.FindAll(posts)
 	if err != nil {
 		return nil, err
 	}
-	return postService.PostPresenter.ResponsePosts(us), nil
+	return postService.PostPresenter.ResponsePosts(pos), nil
 }
 
 func (postService *postService) GetForEditPost(id int)(*model.Post, error){
-	us, err := postService.PostRepository.FindById(id)
+	po, err := postService.PostRepository.FindById(id)
 	if err != nil {
 		return nil, err
 	}
-	return postService.PostPresenter.ResponsePost(us),nil
+	return postService.PostPresenter.ResponsePost(po),nil
 }
 
-func (postService *postService) Update(u *model.Post) error{
+func (postService *postService) Update(post *model.Post) error{
 
-	return postService.PostRepository.Update(u)
+	return postService.PostRepository.Update(post)
 }
 
-func (postService *postService) Delete(u *model.Post) error{
-	return postService.PostRepository.Delete(u)
+func (postService *postService) Delete(post *model.Post) error{
+	return postService.PostRepository.Delete(post)
 }

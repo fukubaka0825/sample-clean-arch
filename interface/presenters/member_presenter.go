@@ -13,12 +13,12 @@ func NewMemberPresenter() MemberPresenter {
 }
 
 type MemberPresenter interface {
-	ResponseMembers(us []*model.Member) []*model.Member
+	ResponseMembers(members []*model.Member) []*model.Member
 }
 
-func (memberPresenter *memberPresenter) ResponseMembers(us []*model.Member) []*model.Member {
-	for _, u := range us {
+func (memberPresenter *memberPresenter) ResponseMembers(members []*model.Member) []*model.Member {
+	for _, u := range members {
 		u.Name = u.Name + "hoge"
 	}
-	return us
+	return members
 }
