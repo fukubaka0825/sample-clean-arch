@@ -5,6 +5,6 @@ import (
 )
 
 type PostPresenter interface {
-	ResponsePosts(us []*model.Post) []*model.Post
-	ResponsePost(us *model.Post) *model.Post
+	ResponsePosts(posts []*model.Post) []*model.Post
+	ResponsePost(post *model.Post) *model.Post
 }

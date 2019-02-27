@@ -6,11 +6,11 @@ import (
 )
 
 func NewRouter(e *echo.Echo, r registry.Interactor) {
-	h := r.NewMemberHandler()
+	//h := r.NewMemberHandler()
 	g := r.NewPostHandler()
 
-	e.POST("/member", h.CreateMember)
-	e.GET("/members", h.GetMembers)
+	//e.POST("/member", h.CreateMember)
+	//e.GET("/members", h.GetMembers)
 	e.POST("/posts", g.CreatePost)
 	e.GET("/", g.GetPosts)
 	e.POST("/post/edit",g.GetPost)

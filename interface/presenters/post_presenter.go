@@ -12,17 +12,21 @@ func NewPostPresenter() PostPresenter {
 }
 
 type PostPresenter interface {
-	ResponsePosts(us []*model.Post) []*model.Post
-	ResponsePost(us *model.Post) *model.Post
+	ResponsePosts(posts []*model.Post) []*model.Post
+	ResponsePost(posts *model.Post) *model.Post
 }
 
-func (postPresenter *postPresenter) ResponsePosts(us []*model.Post) []*model.Post {
-	//特に加工がないからそのまま返す
-	return us
+func (postPresenter *postPresenter) ResponsePosts(posts []*model.Post) []*model.Post {
+	for _,v := range posts{
+		v.Member.Name = "Mr." + v.Name
+		v.Content += "!!!!!!!!!"
+	}
+	return posts
 }
 
-func (postPresenter *postPresenter) ResponsePost(us *model.Post) *model.Post {
-	//特に加工がないからそのまま返す
-	return us
+func (postPresenter *postPresenter) ResponsePost(post *model.Post) *model.Post {
+	post.Name = "Mr." + post.Name
+	post.Content += "!!!!!!!!!"
+	return post
 }
 
