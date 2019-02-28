@@ -2,22 +2,6 @@
 
 
 [[projects]]
-  digest = "1:b3fec40d6c666803fdc0670b0964d3e0579d7541f827241e8aefa1dca14b1fc2"
-  name = "github.com/bxcodec/go-clean-arch"
-  packages = [
-    "article",
-    "article/mocks",
-    "article/usecase",
-    "author",
-    "author/mocks",
-    "author/repository",
-    "models",
-  ]
-  pruneopts = "UT"
-  revision = "fc34d41b93696dc6c80d1483f13e74c6d9dea392"
-  version = "v2.0.0"
-
-[[projects]]
   digest = "1:ffe9824d294da03b391f44e1ae8281281b4afc1bdaa9588c9097785e3af10cec"
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
@@ -107,14 +91,6 @@
   revision = "04140366298a54a039076d798123ffa108fff46c"
 
 [[projects]]
-  digest = "1:0a69a1c0db3591fcefb47f115b224592c8dfa4368b7ba9fae509d5e16cdc95c8"
-  name = "github.com/konsorten/go-windows-terminal-sequences"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "5c8c8bd35d3832f5d134ae1e1e375b69a4d25242"
-  version = "v1.0.1"
-
-[[projects]]
   digest = "1:efd601ad1d1189884f37ed075fadb5bbd17f1f5acf5862827247c6da56d125ba"
   name = "github.com/labstack/echo"
   packages = [
@@ -195,14 +171,6 @@
   version = "v1.0.0"
 
 [[projects]]
-  digest = "1:87c2e02fb01c27060ccc5ba7c5a407cc91147726f8f40b70cceeedbc52b1f3a8"
-  name = "github.com/sirupsen/logrus"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "e1e72e9de974bd926e5c56f83753fba2df402ce5"
-  version = "v1.3.0"
-
-[[projects]]
   digest = "1:3e39bafd6c2f4bf3c76c3bfd16a2e09e016510ad5db90dc02b88e2f565d6d595"
   name = "github.com/spf13/afero"
   packages = [
@@ -246,20 +214,9 @@
   version = "v1.3.1"
 
 [[projects]]
-  digest = "1:ac83cf90d08b63ad5f7e020ef480d319ae890c208f8524622a2f3136e2686b02"
-  name = "github.com/stretchr/objx"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "477a77ecc69700c7cdeb1fa9e129548e1c1c393c"
-  version = "v0.1.1"
-
-[[projects]]
-  digest = "1:0bcc464dabcfad5393daf87c3f8142911d0f6c52569b837e91a1c15e890265f3"
+  digest = "1:972c2427413d41a1e06ca4897e8528e5a1622894050e2f527b38ddf0f343f759"
   name = "github.com/stretchr/testify"
-  packages = [
-    "assert",
-    "mock",
-  ]
+  packages = ["assert"]
   pruneopts = "UT"
   revision = "ffdc059bfe9ce6a4e144ba849dbedead332c6053"
   version = "v1.3.0"
@@ -282,24 +239,20 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:4078ffacb97ad7cd3968cc7acd20552234a8eb70cf5c84a7bc9d85bdcfc9ff3e"
+  digest = "1:520c8ed6c442eed074caf8c1d874d2b0241edbe59729199f6bdf1db99f2ccb9f"
   name = "golang.org/x/crypto"
   packages = [
     "acme",
     "acme/autocert",
-    "ssh/terminal",
   ]
   pruneopts = "UT"
   revision = "74369b46fc6756741c016591724fd1cb8e26845f"
 
 [[projects]]
   branch = "master"
-  digest = "1:0d703f14f9bbbe1070ff0ce86d749dcbc9d68fb0ae554252c09bd4bb37a072e7"
+  digest = "1:8207c052fb873f83c61a5aa16f6add5feb9881eda2112b56f69fd3b9e7f55c3f"
   name = "golang.org/x/sys"
-  packages = [
-    "unix",
-    "windows",
-  ]
+  packages = ["unix"]
   pruneopts = "UT"
   revision = "983097b1a8a340cd1cc7df17d735154d89e10b1a"
 
@@ -354,18 +307,12 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/bxcodec/go-clean-arch/article/mocks",
-    "github.com/bxcodec/go-clean-arch/article/usecase",
-    "github.com/bxcodec/go-clean-arch/author/mocks",
-    "github.com/bxcodec/go-clean-arch/author/repository",
-    "github.com/bxcodec/go-clean-arch/models",
     "github.com/jinzhu/gorm",
     "github.com/jinzhu/gorm/dialects/mysql",
     "github.com/labstack/echo",
     "github.com/labstack/echo/middleware",
     "github.com/spf13/viper",
     "github.com/stretchr/testify/assert",
-    "github.com/stretchr/testify/mock",
     "gopkg.in/DATA-DOG/go-sqlmock.v1",
     "gopkg.in/go-playground/validator.v9",
   ]
