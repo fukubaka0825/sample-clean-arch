@@ -7,7 +7,7 @@ import (
 	"sample-clean-arch/domain/model"
 	"sample-clean-arch/interface/presenters"
 	"sample-clean-arch/usecase/service"
-	"sample-clean-arch/mock"
+	"sample-clean-arch/mocks"
 	"testing"
 )
 
@@ -24,15 +24,12 @@ func TestCreate(t *testing.T) {
 	if err != nil {
 		panic("Got an unexpected error.")
 	}
-
-	//defer db.Close()
 	defer db.Close()
 
-	//	WithArgs(1,"Hello","Content").
-	//	WillReturnResult(sqlmock.NewResult(1, 1))
 	mockPost := model.Post{}
-	mockPostRepo := mock.NewMockPostRepository(db)
+	mockPostRepo := mocks.NewMockPostRepository(db)
 	mockPresenter := presenters.NewPostPresenter()
+
 	se :=service.NewPostService (mockPostRepo, mockPresenter)
 	assert.NoError(t, se.Create(&mockPost))
 	assert.NoError(t, mock.ExpectationsWereMet())
