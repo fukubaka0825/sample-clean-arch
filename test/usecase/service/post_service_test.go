@@ -1,16 +1,14 @@
 package test
 
-
 import (
 	"github.com/jinzhu/gorm"
+	"github.com/stretchr/testify/assert"
 	"gopkg.in/DATA-DOG/go-sqlmock.v1"
 	"sample-clean-arch/domain/model"
-	"sample-clean-arch/infrastructure/datastore"
 	"sample-clean-arch/interface/presenters"
 	"sample-clean-arch/usecase/service"
+	"sample-clean-arch/mock"
 	"testing"
-	"github.com/stretchr/testify/assert"
-
 )
 
 
@@ -18,7 +16,7 @@ import (
 func TestCreate(t *testing.T) {
 	//dbをスタブ用意
 	var db *gorm.DB
-	_,_, err := sqlmock.NewWithDSN("sqlmock_db_0")
+	_,mock, err := sqlmock.NewWithDSN("sqlmock_db_0")
 	if err != nil {
 		panic("Got an unexpected error.")
 	}
@@ -26,22 +24,17 @@ func TestCreate(t *testing.T) {
 	if err != nil {
 		panic("Got an unexpected error.")
 	}
-	defer db.Close()
-	mockPostRepo := datastore.NewPostRepository(db)
-	mockPresenter := presenters.NewPostPresenter()
-	mokeMember := model.Member{
-		ID: 1,
-		Name:"Takashi",
-	}
-	mockPost := model.Post{
-		Member:mokeMember,
-		Name:   "Hello",
-		Content: "Content",
-	}
-	se :=service.NewPostService (mockPostRepo, mockPresenter)
-	seErr := se.Create(&mockPost)
-	//正常系のみ
-	assert.NoError(t, seErr)
 
+	//defer db.Close()
+	defer db.Close()
+
+	//	WithArgs(1,"Hello","Content").
+	//	WillReturnResult(sqlmock.NewResult(1, 1))
+	mockPost := model.Post{}
+	mockPostRepo := mock.NewMockPostRepository(db)
+	mockPresenter := presenters.NewPostPresenter()
+	se :=service.NewPostService (mockPostRepo, mockPresenter)
+	assert.NoError(t, se.Create(&mockPost))
+	assert.NoError(t, mock.ExpectationsWereMet())
 }
 
