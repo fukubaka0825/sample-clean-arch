@@ -1,2 +1,2 @@
 # sample-clean-arch
-golangでclean architecture
+clean architecture with golang
